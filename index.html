@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>លំហាត់តារាងភាពពិតឌីជីថល (១/០) | រៀបរៀងដោយ ចាន់ សុខហេង</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card: rgba(18, 26, 43, 0.92);
+      --border: rgba(99, 102, 241, 0.28);
+      --primary: #6366f1;
+      --primary-glow: rgba(99, 102, 241, 0.35);
+      --success: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.16);
+      --danger: #ef4444;
+      --danger-bg: rgba(239, 68, 68, 0.16);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --row-even: rgba(30, 41, 59, 0.4);
+      --row-odd: rgba(15, 23, 42, 0.6);
+      --gold: #fbbf24;
+    }
+    [data-theme="light"] {
+      --bg: #f1f5f9;
+      --card: rgba(255, 255, 255, 0.96);
+      --border: rgba(99, 102, 241, 0.25);
+      --primary: #4f46e5;
+      --primary-glow: rgba(79, 70, 229, 0.25);
+      --success: #059669;
+      --success-bg: rgba(5, 150, 105, 0.12);
+      --danger: #dc2626;
+      --danger-bg: rgba(220, 38, 38, 0.12);
+      --text: #0f172a;
+      --muted: #64748b;
+      --row-even: rgba(248, 250, 252, 0.9);
+      --row-odd: rgba(241, 245, 249, 0.8);
+      --gold: #d97706;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Kantumruy Pro', sans-serif; }
+    body { background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* Top Ribbon */
+    .author-ribbon {
+      background: linear-gradient(90deg, rgba(99,102,241,0.15), rgba(251,191,36,0.2), rgba(14,165,233,0.15));
+      border-bottom: 1px solid var(--border);
+      text-align: center; padding: 6px 12px; font-size: 0.85rem; font-weight: 600; color: var(--gold);
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+
+    header {
+      background: var(--card); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 50; padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-icon {
+      width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #6366f1, #0ea5e9);
+      display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 1.1rem;
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+    .brand h1 { font-size: 1.05rem; font-weight: 700; }
+    .brand p { font-size: 0.75rem; color: var(--muted); }
+    .hdr-btns { display: flex; gap: 8px; }
+    .icon-btn {
+      width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--border);
+      background: rgba(148,163,184,0.1); color: var(--text); cursor: pointer; display: flex;
+      align-items: center; justify-content: center; font-size: 1rem; transition: 0.2s;
+    }
+    .icon-btn:hover { background: var(--primary-glow); border-color: var(--primary); }
+
+    .container { max-width: 980px; width: 100%; margin: 0 auto; padding: 16px 14px 60px 14px; flex: 1; display: flex; flex-direction: column; gap: 18px; }
+    .screen { display: none; flex-direction: column; gap: 18px; animation: fadeIn 0.25s ease; }
+    .screen.active { display: flex; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 26px 22px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12); backdrop-filter: blur(10px); display: flex; flex-direction: column; gap: 18px;
+    }
+    .welcome-box { max-width: 680px; margin: 20px auto; width: 100%; text-align: center; }
+    .welcome-author-tag {
+      color: var(--gold); font-weight: 700; background: rgba(251,191,36,0.12); padding: 6px 18px;
+      border-radius: 30px; display: inline-block; margin: 0 auto; border: 1px solid rgba(251,191,36,0.3);
+    }
+    .form-grp { text-align: left; display: flex; flex-direction: column; gap: 6px; }
+    .form-grp label { font-size: 0.88rem; font-weight: 600; }
+    .form-input {
+      padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border); background: rgba(148,163,184,0.08);
+      color: var(--text); font-size: 0.95rem; outline: none; transition: 0.2s;
+    }
+    .form-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-glow); }
+
+    .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; text-align: left; margin: 10px 0; }
+    .rule-item { background: rgba(148,163,184,0.08); padding: 12px; border-radius: 12px; border: 1px solid var(--border); }
+    .rule-item h5 { font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; }
+    .rule-item p { font-size: 0.92rem; font-weight: 700; }
+
+    .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+    .stat-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 12px 16px;
+      display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(8px);
+    }
+    .stat-card .lbl { font-size: 0.75rem; color: var(--muted); }
+    .stat-card .val { font-size: 1.25rem; font-weight: 700; }
+
+    .level-bar { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+    .level-bar::-webkit-scrollbar { display: none; }
+    .lvl-btn {
+      padding: 8px 14px; border-radius: 10px; background: var(--card); border: 1px solid var(--border);
+      color: var(--muted); cursor: pointer; font-size: 0.85rem; font-weight: 600; white-space: nowrap; transition: 0.2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .lvl-btn:hover { color: var(--text); border-color: var(--primary); }
+    .lvl-btn.active { background: linear-gradient(135deg, rgba(99,102,241,0.25), rgba(14,165,233,0.2)); color: #818cf8; border-color: var(--primary); }
+    .lvl-badge { font-size: 0.72rem; padding: 2px 6px; border-radius: 6px; background: rgba(148,163,184,0.15); }
+
+    .card-hdr { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; }
+    .tag { font-size: 0.75rem; font-weight: 700; padding: 2px 10px; border-radius: 20px; background: var(--primary); color: #fff; }
+    .tag-st { font-size: 0.75rem; font-weight: 600; padding: 2px 10px; border-radius: 20px; }
+    .st-p { background: rgba(148,163,184,0.15); color: var(--muted); }
+    .st-ok { background: var(--success-bg); color: var(--success); }
+    .st-err { background: var(--danger-bg); color: var(--danger); }
+    .q-title { font-size: 1.3rem; font-weight: 700; }
+    .q-desc { font-size: 0.92rem; color: var(--muted); }
+    .formula-box {
+      background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.35); padding: 8px 20px;
+      border-radius: 12px; font-size: 1.45rem; font-weight: 700; color: #818cf8; font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Table styles for 1 and 0 */
+    .tbl-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; background: rgba(10,15,26,0.3); }
+    table { width: 100%; border-collapse: collapse; text-align: center; min-width: 440px; }
+    th { background: rgba(30,41,59,0.7); padding: 12px 14px; font-size: 0.92rem; border-bottom: 2px solid var(--border); color: var(--text); }
+    th.target-col { background: rgba(99,102,241,0.2); color: #818cf8; border-bottom-color: var(--primary); }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--row-even); }
+    tr:nth-child(odd) td { background: var(--row-odd); }
+    tr:hover td { background: rgba(99,102,241,0.08); }
+
+    .chip { display: inline-flex; width: 32px; height: 32px; border-radius: 8px; align-items: center; justify-content: center; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+    .chip-1 { background: rgba(16,185,129,0.18); color: #10b981; border: 1px solid rgba(16,185,129,0.35); }
+    .chip-0 { background: rgba(239,68,68,0.18); color: #ef4444; border: 1px solid rgba(239,68,68,0.35); }
+
+    .btn-group { display: inline-flex; gap: 4px; background: rgba(148,163,184,0.1); padding: 4px; border-radius: 8px; border: 1px solid var(--border); }
+    .choice-btn {
+      width: 40px; height: 34px; border-radius: 6px; border: none; background: transparent; color: var(--muted);
+      font-weight: 700; font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; cursor: pointer; transition: 0.15s;
+    }
+    .choice-btn:hover { color: var(--text); background: rgba(255,255,255,0.08); }
+    .choice-btn.sel-1 { background: var(--success); color: #fff; box-shadow: 0 2px 8px rgba(16,185,129,0.4); }
+    .choice-btn.sel-0 { background: var(--danger); color: #fff; box-shadow: 0 2px 8px rgba(239,68,68,0.4); }
+
+    .ans-tag { font-size: 0.82rem; font-weight: 600; margin-left: 8px; }
+    .ans-ok { color: var(--success); }
+    .ans-err { color: var(--danger); }
+
+    .actions { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .btn { padding: 10px 20px; border-radius: 12px; font-size: 0.92rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s; border: 1px solid transparent; }
+    .btn-primary { background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; box-shadow: 0 4px 14px var(--primary-glow); }
+    .btn-primary:hover { background: linear-gradient(135deg, #4f46e5, #4338ca); transform: translateY(-1px); }
+    .btn-success { background: linear-gradient(135deg, #10b981, #059669); color: #fff; box-shadow: 0 4px 14px rgba(16,185,129,0.3); }
+    .btn-success:hover { transform: translateY(-1px); }
+    .btn-sub { background: rgba(148,163,184,0.12); border-color: var(--border); color: var(--text); }
+    .btn-sub:hover { background: rgba(148,163,184,0.2); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .exp-box { background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(16,185,129,0.06)); border: 1px solid rgba(99,102,241,0.25); border-radius: 14px; padding: 16px; display: none; }
+    .exp-box h4 { font-size: 0.95rem; color: #818cf8; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+    .exp-box p { font-size: 0.9rem; line-height: 1.6; }
+
+    /* Final Certificate Result Card */
+    .cert-card { background: var(--card); border: 2px solid rgba(251,191,36,0.4); border-radius: 24px; padding: 32px 26px; box-shadow: 0 20px 50px rgba(0,0,0,0.35); max-width: 760px; margin: 0 auto; width: 100%; }
+    .cert-hdr { text-align: center; border-bottom: 2px dashed var(--border); padding-bottom: 18px; margin-bottom: 18px; }
+    .cert-badge { font-size: 0.8rem; font-weight: 700; color: #818cf8; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+    .cert-title { font-size: 1.6rem; font-weight: 700; }
+    .cert-info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .info-box { background: rgba(148,163,184,0.08); padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border); }
+    .info-box span { font-size: 0.78rem; color: var(--muted); display: block; }
+    .info-box strong { font-size: 1.1rem; }
+    .cert-score-banner { background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(16,185,129,0.15)); border: 1px solid var(--primary); border-radius: 16px; padding: 20px; text-align: center; display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 16px; }
+    .score-big { font-size: 2.2rem; font-weight: 800; color: var(--success); font-family: 'JetBrains Mono', monospace; }
+    .pct-big { font-size: 2.2rem; font-weight: 800; color: #818cf8; font-family: 'JetBrains Mono', monospace; }
+    .cert-sig { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--border); padding-top: 16px; font-size: 0.85rem; color: var(--muted); flex-wrap: wrap; gap: 10px; }
+
+    .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); z-index: 100; display: none; align-items: center; justify-content: center; padding: 14px; }
+    .modal-box { background: var(--card); border: 1px solid var(--border); border-radius: 18px; max-width: 680px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 22px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+    .modal-hdr { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 14px; }
+    .close-btn { background: none; border: none; font-size: 1.5rem; color: var(--muted); cursor: pointer; }
+    .q-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(46px, 1fr)); gap: 8px; }
+    .q-dot { height: 44px; border-radius: 10px; background: rgba(148,163,184,0.1); border: 1px solid var(--border); color: var(--text); font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; font-size: 0.9rem; }
+    .q-dot:hover { border-color: var(--primary); transform: translateY(-1px); }
+    .q-dot.active { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary); }
+    .q-dot.dot-ok { background: var(--success-bg); border-color: var(--success); color: var(--success); }
+    .q-dot.dot-err { background: var(--danger-bg); border-color: var(--danger); color: var(--danger); }
+
+    footer { text-align: center; padding: 16px; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); background: var(--card); margin-top: auto; }
+    footer strong { color: var(--gold); }
+    .toast-box { position: fixed; bottom: 20px; right: 20px; z-index: 999; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
+    .toast-item { background: var(--card); border: 1px solid var(--border); padding: 10px 18px; border-radius: 10px; color: var(--text); font-size: 0.88rem; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.3); backdrop-filter: blur(10px); }
+    #confetti { position: fixed; inset: 0; pointer-events: none; z-index: 900; }
+  </style>
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+
+  <!-- Top universal author banner on every page -->
+  <div class="author-ribbon">
+    <span>✨</span>
+    <span>ប្រព័ន្ធលំហាត់តក្កវិទ្យាឌីជីថល (១/០) • រៀបរៀងដោយ <strong>ចាន់ សុខហេង</strong></span>
+    <span>✨</span>
+  </div>
+
+  <header>
+    <div class="brand">
+      <div class="brand-icon mono">1/0</div>
+      <div>
+        <h1>តារាងភាពពិតឌីជីថល (Truth Table Master)</h1>
+        <p id="hdr-student-name">រៀបរៀងដោយ ចាន់ សុខហេង</p>
+      </div>
+    </div>
+    <div class="hdr-btns">
+      <button class="icon-btn" id="btn-sound" title="បិទ/បើកសំឡេង">🔊</button>
+      <button class="icon-btn" id="btn-cheat" title="រូបមន្តសង្ខេប">📖</button>
+      <button class="icon-btn" id="btn-list" title="បញ្ជីសំណួរទាំង ៥០">📋</button>
+      <button class="icon-btn" id="btn-theme" title="ប្តូរផ្ទាំង">🌓</button>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- ផ្ទាំងទី ១: ផ្ទាំងដំបូងសម្រាប់បំពេញព័ត៌មានសិស្ស -->
+    <div class="screen active" id="screen-welcome">
+      <div class="card welcome-box">
+        <div style="font-size:0.85rem; font-weight:700; color:#818cf8; letter-spacing:0.5px;">🎓 ប្រព័ន្ធស្វ័យសិក្សា និងវាស់ស្ទង់សមត្ថភាព</div>
+        <h2 style="font-size:1.8rem; font-weight:700;">កម្មវិធីលំហាត់តារាងភាពពិតឌីជីថល<br><span style="color:#818cf8; font-size:1.2rem;">(៥០ សំណួរ • តម្លៃ ១ និង ០)</span></h2>
+        
+        <div class="welcome-author-tag">
+          ✍️ រៀបរៀងដោយ ចាន់ សុខហេង
+        </div>
+
+        <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">
+          សូមបំពេញព័ត៌មានខាងក្រោមដើម្បីចាប់ផ្ដើមធ្វើលំហាត់។ ក្នុងប្រព័ន្ធនេះ តម្លៃពិតតំណាងដោយលេខ <strong>1</strong> និងតម្លៃមិនពិតតំណាងដោយលេខ <strong>0</strong>។
+        </p>
+
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div class="form-grp">
+            <label>គោត្តនាម និង នាមសិស្ស (Student Name) <span style="color:var(--danger)">*</span></label>
+            <input type="text" id="input-name" class="form-input" placeholder="ឧ. កែវ វិបុល" required>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div class="form-grp">
+              <label>ថ្នាក់ទី ឬ ជំនាញ (Class / Major)</label>
+              <input type="text" id="input-class" class="form-input" placeholder="ឧ. ថ្នាក់ទី ១២A">
+            </div>
+            <div class="form-grp">
+              <label>គ្រឹះស្ថានសិក្សា / សាលា (School)</label>
+              <input type="text" id="input-school" class="form-input" placeholder="ឧ. វិទ្យាល័យព្រះស៊ីសុវត្ថិ">
+            </div>
+          </div>
+        </div>
+
+        <div class="rules-grid">
+          <div class="rule-item"><h5>ចំនួនលំហាត់</h5><p>៥០ សំណួរ</p></div>
+          <div class="rule-item"><h5>កម្រិតវិញ្ញាសា</h5><p>៥ កម្រិត (១ ដល់ ៥)</p></div>
+          <div class="rule-item"><h5>តម្លៃបំពេញ</h5><p class="mono">1 (ពិត) / 0 (មិនពិត)</p></div>
+          <div class="rule-item"><h5>វិញ្ញាបនបត្រ</h5><p>ទាញយកជារូបភាព</p></div>
+        </div>
+
+        <button class="btn btn-primary" id="btn-start-quiz" style="padding:14px 28px; font-size:1.05rem;">
+          🚀 ចាប់ផ្ដើមធ្វើលំហាត់ឥឡូវនេះ
+        </button>
+
+        <div style="font-size:0.8rem; color:var(--muted);">
+          រៀបរៀង និងរចនាប្រព័ន្ធដោយ <strong>ចាន់ សុខហេង</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- ផ្ទាំងទី ២: ផ្ទាំងអនុវត្តលំហាត់ទាំង ៥០ -->
+    <div class="screen" id="screen-exercise">
+      <!-- Stats Bar -->
+      <div class="stats-bar">
+        <div class="stat-card">
+          <div><div class="lbl">ឆ្លើយរួច</div><div class="val" id="st-prog">0 / 50</div></div>
+          <div style="font-size:1.5rem;">📊</div>
+        </div>
+        <div class="stat-card">
+          <div><div class="lbl">ត្រឹមត្រូវ</div><div class="val" id="st-corr">0 / 50</div></div>
+          <div style="font-size:1.5rem; color:var(--success);">✓</div>
+        </div>
+        <div class="stat-card">
+          <div><div class="lbl">ភាគរយជោគជ័យ</div><div class="val" id="st-pct">0%</div></div>
+          <div style="font-size:1.5rem; color:#818cf8;">🎯</div>
+        </div>
+        <div class="stat-card">
+          <div><div class="lbl">កម្រិតបច្ចុប្បន្ន</div><div class="val" id="st-lvl">កម្រិត ១</div></div>
+          <div style="font-size:1.5rem; color:var(--gold);">⭐</div>
+        </div>
+      </div>
+
+      <!-- Level Bar -->
+      <div class="level-bar">
+        <div class="lvl-btn active" data-lvl="1"><span>កម្រិត ១: ប្រយោគ & NOT</span><span class="lvl-badge mono" id="bg-1">0/10</span></div>
+        <div class="lvl-btn" data-lvl="2"><span>កម្រិត ២: AND / OR</span><span class="lvl-badge mono" id="bg-2">0/10</span></div>
+        <div class="lvl-btn" data-lvl="3"><span>កម្រិត ៣: Implication</span><span class="lvl-badge mono" id="bg-3">0/10</span></div>
+        <div class="lvl-btn" data-lvl="4"><span>កម្រិត ៤: Biconditional</span><span class="lvl-badge mono" id="bg-4">0/10</span></div>
+        <div class="lvl-btn" data-lvl="5"><span>កម្រិត ៥: ៣ អថេរ & សមមូល</span><span class="lvl-badge mono" id="bg-5">0/10</span></div>
+      </div>
+
+      <!-- Exercise Card -->
+      <div class="card">
+        <div class="card-hdr">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+              <span class="tag" id="q-lvl-tag">កម្រិត ១</span>
+              <span class="tag-st st-p" id="q-st-tag">⚪ មិនទាន់ពិនិត្យ</span>
+            </div>
+            <h2 class="q-title" id="q-title">លំហាត់ទី ១</h2>
+            <p class="q-desc" id="q-desc">បំពេញតារាងភាពពិតសម្រាប់បដិសេធ ¬p</p>
+          </div>
+          <div class="formula-box" id="q-formula">¬p</div>
+        </div>
+
+        <!-- Interactive Table with 1 and 0 -->
+        <div class="tbl-wrap">
+          <table id="tt-table"></table>
+        </div>
+
+        <!-- Explanation Box -->
+        <div class="exp-box" id="exp-box">
+          <h4>💡 ការពន្យល់ និងក្បួនដោះស្រាយ៖</h4>
+          <p id="exp-text"></p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="actions">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-primary" id="btn-check"><span>✓</span> ពិនិត្យចម្លើយ</button>
+            <button class="btn btn-sub" id="btn-reveal"><span>👁️</span> បង្ហាញចម្លើយ</button>
+            <button class="btn btn-sub" id="btn-clear"><span>↺</span> សម្អាត</button>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-sub" id="btn-prev">&lt; ថយក្រោយ</button>
+            <button class="btn btn-primary" id="btn-next">បន្ទាប់ &gt;</button>
+            <button class="btn btn-success" id="btn-finish-quiz" title="បញ្ចប់ការធ្វើលំហាត់ និងមើលលទ្ធផល">
+              🏁 បញ្ចប់ & មើលលទ្ធផល
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.84rem; color:var(--muted); flex-wrap:wrap; gap:8px;">
+        <span>ចុច <strong>[ 1 ]</strong> សម្រាប់ពិត ឬ <strong>[ 0 ]</strong> សម្រាប់មិនពិតក្នុងក្រឡានីមួយៗ។</span>
+        <span style="color:var(--gold);">រៀបរៀងដោយ ចាន់ សុខហេង</span>
+      </div>
+    </div>
+
+    <!-- ផ្ទាំងទី ៣: ផ្ទាំងចុងក្រោយបង្ហាញលទ្ធផល និងទាញយករូបភាព -->
+    <div class="screen" id="screen-result">
+      <div class="cert-card" id="cert-render-card">
+        <div class="cert-hdr">
+          <div class="cert-badge">វិញ្ញាបនបត្រលទ្ធផលតក្កវិទ្យាឌីជីថល • LOGIC CERTIFICATE</div>
+          <h2 class="cert-title">លទ្ធផលនៃការអនុវត្តលំហាត់តារាងភាពពិត</h2>
+          <div style="color:var(--gold); font-size:1rem; font-weight:700; margin-top:4px;">រៀបរៀងដោយ ចាន់ សុខហេង</div>
+        </div>
+
+        <div>
+          <div class="cert-info-grid">
+            <div class="info-box">
+              <span>ឈ្មោះសិស្ស / Student:</span>
+              <strong id="res-name">-</strong>
+            </div>
+            <div class="info-box">
+              <span>ថ្នាក់ ឬ ជំនាញ / Class:</span>
+              <strong id="res-class">-</strong>
+            </div>
+            <div class="info-box">
+              <span>គ្រឹះស្ថានសិក្សា / School:</span>
+              <strong id="res-school">-</strong>
+            </div>
+            <div class="info-box">
+              <span>កាលបរិច្ឆេទ / Date:</span>
+              <strong id="res-date">-</strong>
+            </div>
+          </div>
+
+          <div class="cert-score-banner">
+            <div>
+              <div style="font-size:0.85rem; color:var(--muted); margin-bottom:4px;">ពិន្ទុត្រឹមត្រូវសរុប</div>
+              <div class="score-big" id="res-score">0 / 50</div>
+            </div>
+            <div>
+              <div style="font-size:0.85rem; color:var(--muted); margin-bottom:4px;">ភាគរយជោគជ័យ</div>
+              <div class="pct-big" id="res-pct">0%</div>
+            </div>
+            <div>
+              <div style="font-size:0.85rem; color:var(--muted); margin-bottom:4px;">កម្រិតវាយតម្លៃ</div>
+              <div style="font-size:1.5rem; font-weight:700; color:var(--gold);" id="res-grade">ល្អប្រសើរ</div>
+            </div>
+          </div>
+
+          <!-- Breakdown by level -->
+          <div style="background:rgba(148,163,184,0.06); border:1px solid var(--border); border-radius:14px; padding:16px; margin-bottom:16px;">
+            <h4 style="font-size:0.9rem; margin-bottom:10px; color:#818cf8;">📊 លទ្ធផលលម្អិតតាមកម្រិតទាំង ៥៖</h4>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(110px, 1fr)); gap:8px;" id="res-level-breakdown"></div>
+          </div>
+        </div>
+
+        <div class="cert-sig">
+          <div>
+            <div>ប្រព័ន្ធលំហាត់តារាងភាពពិតឌីជីថល (Truth Table Master 1/0)</div>
+            <div style="font-size:0.78rem;">ផ្ទៀងផ្ទាត់ដោយស្វ័យប្រវត្តិតាមក្បួនតក្កវិទ្យាគណិតវិទ្យា</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-weight:700; color:var(--gold);">រៀបរៀងដោយ ចាន់ សុខហេង</div>
+            <div style="font-size:0.75rem;">គ្រូបង្រៀន និងអ្នកអភិវឌ្ឍន៍កម្មវិធី</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action buttons for result -->
+      <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:10px;">
+        <button class="btn btn-success" id="btn-download-image" style="padding:12px 24px; font-size:1rem;">
+          📥 ទាញយកផ្ទាំងលទ្ធផលជារូបភាព (PNG)
+        </button>
+        <button class="btn btn-sub" id="btn-back-to-exercise">
+          👁️ ពិនិត្យចម្លើយលំហាត់ឡើងវិញ
+        </button>
+        <button class="btn btn-sub" id="btn-restart-from-result">
+          🔄 ធ្វើលំហាត់ថ្មីពីដំបូង
+        </button>
+      </div>
+
+      <div style="text-align:center; font-size:0.85rem; color:var(--gold); margin-top:6px;">
+        រៀបរៀងដោយ ចាន់ សុខហេង
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal: Questions Grid -->
+  <div class="modal" id="modal-q">
+    <div class="modal-box">
+      <div class="modal-hdr">
+        <h3>📋 បញ្ជីលំហាត់ទាំង ៥០ សំណួរ</h3>
+        <button class="close-btn" id="close-modal-q">&times;</button>
+      </div>
+      <div style="font-size:0.85rem; color:var(--gold); margin-bottom:10px;">រៀបរៀងដោយ ចាន់ សុខហេង</div>
+      <div class="q-grid" id="q-grid"></div>
+    </div>
+  </div>
+
+  <!-- Modal: Cheat Sheet -->
+  <div class="modal" id="modal-c">
+    <div class="modal-box">
+      <div class="modal-hdr">
+        <h3>📖 តារាងរូបមន្តសង្ខេបតក្កវិទ្យា (តម្លៃ ១ / ០)</h3>
+        <button class="close-btn" id="close-modal-c">&times;</button>
+      </div>
+      <div style="font-size:0.85rem; color:var(--gold); margin-bottom:10px;">រៀបរៀងដោយ ចាន់ សុខហេង</div>
+      <table style="width:100%; border:1px solid var(--border); font-size:0.88rem; text-align:left;">
+        <tr style="background:rgba(99,102,241,0.15);"><th style="padding:8px;">ឈ្នាប់</th><th style="padding:8px;">និមិត្តសញ្ញា</th><th style="padding:8px;">លក្ខខណ្ឌភាពពិត (1/0)</th></tr>
+        <tr><td style="padding:8px;" class="mono">NOT</td><td style="padding:8px; font-weight:700; color:#818cf8;" class="mono">¬p</td><td style="padding:8px;">ផ្ទុយពីតម្លៃដើមជានិច្ច (1 ទៅ 0, 0 ទៅ 1)</td></tr>
+        <tr><td style="padding:8px;" class="mono">AND</td><td style="padding:8px; font-weight:700; color:#818cf8;" class="mono">p ∧ q</td><td style="padding:8px;">ពិត (1) តែពេលទាំងពីរស្មើ 1 ព្រមគ្នា</td></tr>
+        <tr><td style="padding:8px;" class="mono">OR</td><td style="padding:8px; font-weight:700; color:#818cf8;" class="mono">p ∨ q</td><td style="padding:8px;">ពិត (1) កាលណាមានយ៉ាងហោចមួយស្មើ 1</td></tr>
+        <tr><td style="padding:8px;" class="mono">Implication</td><td style="padding:8px; font-weight:700; color:#818cf8;" class="mono">p → q</td><td style="padding:8px;">មិនពិត (0) តែករណី 1 → 0 ប៉ុណ្ណោះ</td></tr>
+        <tr><td style="padding:8px;" class="mono">Biconditional</td><td style="padding:8px; font-weight:700; color:#818cf8;" class="mono">p ↔ q</td><td style="padding:8px;">ពិត (1) កាលណាមានតម្លៃដូចគ្នា (1=1 ឬ 0=0)</td></tr>
+        <tr><td style="padding:8px;" class="mono">XOR</td><td style="padding:8px; font-weight:700; color:#818cf8;" class="mono">¬(p ↔ q)</td><td style="padding:8px;">ពិត (1) កាលណាមានតម្លៃផ្ទុយគ្នា (មួយ 1 មួយ 0)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Universal Footer -->
+  <footer>
+    <div>ប្រព័ន្ធលំហាត់តារាងភាពពិតឌីជីថល ៥០ សំណួរ • <strong>រៀបរៀងដោយ ចាន់ សុខហេង</strong></div>
+  </footer>
+
+  <div class="toast-box" id="toasts"></div>
+
+  <script>
+    // Logic Operators
+    const imp = (a, b) => (!a || b);
+    const bicond = (a, b) => (a === b);
+
+    // 50 Questions Data: [id, level, formula, description, vars, evalFn, explanation]
+    const RAW_QUESTIONS = [
+      [1, 1, "¬p", "បំពេញតារាងភាពពិតសម្រាប់បដិសេធ ¬p", ["p"], v => !v.p, "ប្រយោគបដិសេធ ¬p មានតម្លៃផ្ទុយពី p ជានិច្ច (បើ p=1 នោះ ¬p=0 ហើយបើ p=0 នោះ ¬p=1)។"],
+      [2, 1, "¬(¬p)", "បំពេញតារាងភាពពិតសម្រាប់បដិសេធពីរដង ¬(¬p)", ["p"], v => v.p, "បដិសេធពីរដង ¬(¬p) សមមូលនឹង p ដើមវិញ (¬(¬1)=1, ¬(¬0)=0)។"],
+      [3, 1, "p ∧ 1", "ច្បាប់អត្តសញ្ញាណ (Identity Law): p ∧ 1", ["p"], v => v.p && true, "ឈ្នាប់ 'និង' ជាមួយតម្លៃ 1 គឺអាស្រ័យលើ p (1 ∧ 1 = 1, 0 ∧ 1 = 0)។ ដូចនេះ p ∧ 1 ≡ p។"],
+      [4, 1, "p ∨ 0", "ច្បាប់អត្តសញ្ញាណ (Identity Law): p ∨ 0", ["p"], v => v.p || false, "ឈ្នាប់ 'ឬ' ជាមួយតម្លៃ 0 គឺអាស្រ័យលើ p (1 ∨ 0 = 1, 0 ∨ 0 = 0)។ ដូចនេះ p ∨ 0 ≡ p។"],
+      [5, 1, "p ∧ 0", "ច្បាប់គ្របដណ្តប់ (Domination Law): p ∧ 0", ["p"], v => false, "ឈ្នាប់ 'និង' ជាមួយតម្លៃ 0 គឺមិនពិត (0) ជានិច្ច ព្រោះត្រូវការ 1 ទាំងពីរទើបបាន 1។"],
+      [6, 1, "p ∨ 1", "ច្បាប់គ្របដណ្តប់ (Domination Law): p ∨ 1", ["p"], v => true, "ឈ្នាប់ 'ឬ' ជាមួយតម្លៃ 1 គឺពិត (1) ជានិច្ច ព្រោះត្រូវការតែមួយស្មើ 1 គឺបាន 1 ហើយ។"],
+      [7, 1, "p ∧ p", "ច្បាប់អាយឌីមប៉ូតង់ (Idempotent Law): p ∧ p", ["p"], v => v.p, "p ∧ p មានតម្លៃភាពពិតស្មើនឹង p (1 ∧ 1 = 1 និង 0 ∧ 0 = 0)។"],
+      [8, 1, "p ∨ p", "ច្បាប់អាយឌីមប៉ូតង់ (Idempotent Law): p ∨ p", ["p"], v => v.p, "p ∨ p មានតម្លៃភាពពិតស្មើនឹង p (1 ∨ 1 = 1 និង 0 ∨ 0 = 0)។"],
+      [9, 1, "p ∧ ¬p", "ភាពផ្ទុយស្រឡះ (Contradiction): p ∧ ¬p", ["p"], v => false, "p និង ¬p មិនអាចពិត (1) ព្រមគ្នាបានឡើយ ដូច្នេះលទ្ធផលស្មើ 0 គ្រប់ជួរទាំងអស់។"],
+      [10, 1, "p ∨ ¬p", "សច្ចភាព (Tautology): p ∨ ¬p", ["p"], v => true, "ក្នុងចំណោម p និង ¬p ត្រូវតែមានមួយស្មើ 1 ជានិច្ច ដូច្នេះលទ្ធផលស្មើ 1 គ្រប់ជួរទាំងអស់។"],
+
+      [11, 2, "p ∧ q", "ឈ្នាប់ 'និង' (Conjunction): p ∧ q", ["p", "q"], v => v.p && v.q, "ឈ្នាប់ 'និង' (∧) ពិត (1) តែពេល p និង q ស្មើ 1 ទាំងពីរព្រមគ្នា។ បើមាន 0 នោះស្មើ 0។"],
+      [12, 2, "p ∨ q", "ឈ្នាប់ 'ឬ' (Disjunction): p ∨ q", ["p", "q"], v => v.p || v.q, "ឈ្នាប់ 'ឬ' (∨) ពិត (1) កាលណាមានយ៉ាងហោចណាស់មួយស្មើ 1។ វាមិនពិត (0) តែពេល 0 ទាំងពីរ។"],
+      [13, 2, "¬p ∧ q", "បំពេញតារាងភាពពិតសម្រាប់: ¬p ∧ q", ["p", "q"], v => !v.p && v.q, "ពិត (1) តែមួយករណីគត់គឺនៅពេល p=0 និង q=1។ ករណីផ្សេងទៀតគឺ 0។"],
+      [14, 2, "p ∧ ¬q", "បំពេញតារាងភាពពិតសម្រាប់: p ∧ ¬q", ["p", "q"], v => v.p && !v.q, "ពិត (1) តែមួយករណីគត់គឺនៅពេល p=1 និង q=0។ ករណីផ្សេងទៀតគឺ 0។"],
+      [15, 2, "¬p ∨ q", "បំពេញតារាងភាពពិតសម្រាប់: ¬p ∨ q", ["p", "q"], v => !v.p || v.q, "មិនពិត (0) តែមួយករណីគត់គឺនៅពេល p=1 និង q=0។ ករណីផ្សេងទៀតគឺ 1 ទាំងអស់។"],
+      [16, 2, "p ∨ ¬q", "បំពេញតារាងភាពពិតសម្រាប់: p ∨ ¬q", ["p", "q"], v => v.p || !v.q, "មិនពិត (0) តែមួយករណីគត់គឺនៅពេល p=0 និង q=1។ ករណីផ្សេងទៀតគឺ 1 ទាំងអស់។"],
+      [17, 2, "¬p ∧ ¬q", "បំពេញតារាងភាពពិតសម្រាប់: ¬p ∧ ¬q", ["p", "q"], v => !v.p && !v.q, "ពិត (1) តែមួយករណីគត់គឺនៅពេល p=0 និង q=0 ទាំងពីរ។"],
+      [18, 2, "¬p ∨ ¬q", "បំពេញតារាងភាពពិតសម្រាប់: ¬p ∨ ¬q", ["p", "q"], v => !v.p || !v.q, "មិនពិត (0) តែមួយករណីគត់គឺនៅពេល p=1 និង q=1 ទាំងពីរ។"],
+      [19, 2, "¬(p ∧ q)", "បដិសេធនៃឈ្នាប់ 'និង' (NAND): ¬(p ∧ q)", ["p", "q"], v => !(v.p && v.q), "មិនពិត (0) តែមួយករណីគត់គឺនៅពេល p=1 និង q=1។ សមមូលនឹង ¬p ∨ ¬q។"],
+      [20, 2, "¬(p ∨ q)", "បដិសេធនៃឈ្នាប់ 'ឬ' (NOR): ¬(p ∨ q)", ["p", "q"], v => !(v.p || v.q), "ពិត (1) តែមួយករណីគត់គឺនៅពេល p=0 និង q=0 ទាំងពីរ។ សមមូលនឹង ¬p ∧ ¬q។"],
+
+      [21, 3, "p → q", "ប្រយោគលក្ខខណ្ឌ (Implication): p → q", ["p", "q"], v => imp(v.p, v.q), "p → q មិនពិត (0) តែមួយករណីគត់គឺនៅពេល p=1 តែ q=0។ ករណីផ្សេងទៀតស្មើ 1 ទាំងអស់។"],
+      [22, 3, "q → p", "ប្រយោគច្រាស (Converse): q → p", ["p", "q"], v => imp(v.q, v.p), "q → p មិនពិត (0) តែនៅពេល q=1 ហើយ p=0 ប៉ុណ្ណោះ។"],
+      [23, 3, "¬p → ¬q", "ប្រយោគផ្ទុយ (Inverse): ¬p → ¬q", ["p", "q"], v => imp(!v.p, !v.q), "¬p → ¬q មិនពិត (0) លុះត្រាតែ p=0 ហើយ q=1។ មានតម្លៃដូច q → p។"],
+      [24, 3, "¬q → ¬p", "ប្រយោគច្រាសផ្ទុយ (Contrapositive): ¬q → ¬p", ["p", "q"], v => imp(!v.q, !v.p), "ច្រាសផ្ទុយ ¬q → ¬p មានតម្លៃដូចគ្នានឹង p → q បេះបិទ (≡ p → q)។"],
+      [25, 3, "¬(p → q)", "បដិសេធនៃលក្ខខណ្ឌ: ¬(p → q)", ["p", "q"], v => !imp(v.p, v.q), "¬(p → q) ពិត (1) តែមួយករណីគត់គឺនៅពេល p=1 និង q=0 (≡ p ∧ ¬q)។"],
+      [26, 3, "p → ¬q", "បំពេញតារាងភាពពិតសម្រាប់: p → ¬q", ["p", "q"], v => imp(v.p, !v.q), "មិនពិត (0) តែនៅពេល p=1 និង q=1 ប៉ុណ្ណោះ។"],
+      [27, 3, "¬p → q", "បំពេញតារាងភាពពិតសម្រាប់: ¬p → q", ["p", "q"], v => imp(!v.p, v.q), "មិនពិត (0) តែមួយករណីគត់គឺនៅពេល p=0 និង q=0 (≡ p ∨ q)។"],
+      [28, 3, "(p ∧ q) → p", "ច្បាប់បង្រួម (Simplification Law): (p ∧ q) → p", ["p", "q"], v => imp(v.p && v.q, v.p), "ពិត (1) គ្រប់ជួរទាំងអស់ ព្រោះជាសច្ចភាព (Tautology)។"],
+      [29, 3, "p → (p ∨ q)", "ច្បាប់បន្ថែម (Addition Law): p → (p ∨ q)", ["p", "q"], v => imp(v.p, v.p || v.q), "ពិត (1) គ្រប់ជួរទាំងអស់ ព្រោះបើ p=1 នោះ p ∨ q ប្រាកដជា 1។"],
+      [30, 3, "(p → q) ∧ p", "សម្មតិកម្ម Modus Ponens: (p → q) ∧ p", ["p", "q"], v => imp(v.p, v.q) && v.p, "ពិត (1) តែមួយករណីគត់គឺនៅពេល p=1 និង q=1 ទាំងពីរ។"],
+
+      [31, 4, "p ↔ q", "ប្រយោគទ្វេលក្ខខណ្ឌ (Biconditional): p ↔ q", ["p", "q"], v => bicond(v.p, v.q), "p ↔ q ពិត (1) លុះត្រាតែ p និង q មានតម្លៃដូចគ្នា (1,1 ឬ 0,0)។"],
+      [32, 4, "¬(p ↔ q)", "បដិសេធទ្វេលក្ខខណ្ឌ (XOR): ¬(p ↔ q)", ["p", "q"], v => !bicond(v.p, v.q), "ពិត (1) លុះត្រាតែ p និង q មានតម្លៃផ្ទុយគ្នា (មួយ 1 មួយ 0)។"],
+      [33, 4, "p ↔ ¬q", "បំពេញតារាងភាពពិតសម្រាប់: p ↔ ¬q", ["p", "q"], v => bicond(v.p, !v.q), "ពិត (1) នៅពេល p និង q មានតម្លៃខុសគ្នា (សមមូលនឹង XOR)។"],
+      [34, 4, "¬p ↔ ¬q", "បំពេញតារាងភាពពិតសម្រាប់: ¬p ↔ ¬q", ["p", "q"], v => bicond(!v.p, !v.q), "¬p ↔ ¬q សមមូលនឹង p ↔ q ដើមវិញ។"],
+      [35, 4, "(p → q) ∧ (q → p)", "និយមន័យនៃទ្វេលក្ខខណ្ឌ: (p → q) ∧ (q → p)", ["p", "q"], v => imp(v.p, v.q) && imp(v.q, v.p), "នេះគឺជានិយមន័យនៃ p ↔ q ពិតត្រង់ជួរ (1,1) និង (0,0)។"],
+      [36, 4, "(p ∨ q) ∧ ¬(p ∧ q)", "និយមន័យ XOR: (p ∨ q) ∧ ¬(p ∧ q)", ["p", "q"], v => (v.p || v.q) && !(v.p && v.q), "មានន័យថា 'p ឬ q ប៉ុន្តែមិនមែនទាំងពីរ'។ ពិតត្រង់ (1,0) និង (0,1)។"],
+      [37, 4, "(p ∧ ¬q) ∨ (¬p ∧ q)", "ទម្រង់ DNF នៃ XOR: (p ∧ ¬q) ∨ (¬p ∧ q)", ["p", "q"], v => (v.p && !v.q) || (!v.p && v.q), "សមមូលនឹង Exclusive OR ពិតត្រង់ជួរ (1,0) និង (0,1)។"],
+      [38, 4, "(p → q) ↔ (¬p ∨ q)", "ផ្ទៀងផ្ទាត់ Material Implication Tautology", ["p", "q"], v => bicond(imp(v.p, v.q), !v.p || v.q), "ពិត (1) គ្រប់ជួរទាំងអស់ ព្រោះ p → q ≡ ¬p ∨ q។"],
+      [39, 4, "¬(p ∧ q) ↔ (¬p ∨ ¬q)", "ផ្ទៀងផ្ទាត់ច្បាប់ De Morgan ទី១", ["p", "q"], v => bicond(!(v.p && v.q), !v.p || !v.q), "ពិត (1) គ្រប់ជួរទាំងអស់ ព្រោះជាសច្ចភាព De Morgan។"],
+      [40, 4, "¬(p ∨ q) ↔ (¬p ∧ ¬q)", "ផ្ទៀងផ្ទាត់ច្បាប់ De Morgan ទី២", ["p", "q"], v => bicond(!(v.p || v.q), !v.p && !v.q), "ពិត (1) គ្រប់ជួរទាំងអស់ ព្រោះជាសច្ចភាព De Morgan។"],
+
+      [41, 5, "(p ∧ q) → r", "តារាងភាពពិត ៣ អថេរសម្រាប់: (p ∧ q) → r", ["p", "q", "r"], v => imp(v.p && v.q, v.r), "មិនពិត (0) តែមួយករណីគត់គឺនៅពេល p=1, q=1 តែ r=0។ ជួរផ្សេងទៀតគឺ 1។"],
+      [42, 5, "p ∨ (q ∧ r)", "តារាងភាពពិត ៣ អថេរសម្រាប់: p ∨ (q ∧ r)", ["p", "q", "r"], v => v.p || (v.q && v.r), "បើ p=1 គឺស្មើ 1 ភ្លាម។ បើ p=0 គឺពិតបានលុះត្រាតែ q=1 និង r=1 ទាំងពីរ។"],
+      [43, 5, "(p ∨ q) → r", "តារាងភាពពិត ៣ អថេរសម្រាប់: (p ∨ q) → r", ["p", "q", "r"], v => imp(v.p || v.q, v.r), "មិនពិត (0) នៅពេល (p ∨ q)=1 តែ r=0 (ត្រង់ជួរ 110, 100, 010)។"],
+      [44, 5, "p → (q → r)", "តារាងភាពពិតសម្រាប់ Exportation Law: p → (q → r)", ["p", "q", "r"], v => imp(v.p, imp(v.q, v.r)), "សមមូលនឹង (p ∧ q) → r មិនពិតតែត្រង់ p=1, q=1, r=0 ប៉ុណ្ណោះ។"],
+      [45, 5, "(p → q) ∧ (q → r)", "សម្មតិកម្ម Hypothetical Syllogism: (p → q) ∧ (q → r)", ["p", "q", "r"], v => imp(v.p, v.q) && imp(v.q, v.r), "ពិត (1) នៅពេលលក្ខខណ្ឌឆ្លងទាំងពីរបំពេញបានត្រឹមត្រូវ។"],
+      [46, 5, "((p→q) ∧ (q→r)) → (p→r)", "វិធានសនិទានភាពឆ្លង Hypothetical Syllogism", ["p", "q", "r"], v => imp(imp(v.p, v.q) && imp(v.q, v.r), imp(v.p, v.r)), "ពិត (1) គ្រប់ជួរទាំងអស់ ព្រោះជាវិធានទាញហេតុផលត្រឹមត្រូវ (Tautology)។"],
+      [47, 5, "(p ∧ q) ∨ (¬p ∧ r)", "សៀគ្វីជ្រើសរើស Multiplexer: (p ∧ q) ∨ (¬p ∧ r)", ["p", "q", "r"], v => (v.p && v.q) || (!v.p && v.r), "បើ p=1 ជ្រើសរើសយកតម្លៃ q, បើ p=0 ជ្រើសរើសយកតម្លៃ r។"],
+      [48, 5, "(p ↔ q) ↔ r", "ភាពឆ្លាស់នៃទ្វេលក្ខខណ្ឌ: (p ↔ q) ↔ r", ["p", "q", "r"], v => bicond(bicond(v.p, v.q), v.r), "ពិត (1) នៅពេលចំនួននៃតម្លៃ 0 គឺជាចំនួនគូ។"],
+      [49, 5, "p ∧ (q ∨ r)", "ច្បាប់បំបែក (Distributive Law): p ∧ (q ∨ r)", ["p", "q", "r"], v => v.p && (v.q || v.r), "ពិត (1) បានលុះត្រាតែ p=1 ហើយយ៉ាងហោចណាស់ q=1 ឬ r=1។"],
+      [50, 5, "((p ∨ q) ∧ ¬p) → q", "វិធាន Disjunctive Syllogism Rule", ["p", "q"], v => imp((v.p || v.q) && !v.p, v.q), "ពិត (1) គ្រប់ជួរទាំងអស់ ព្រោះបើ (p ឬ q) ពិត ហើយ p មិនពិត នោះ q ច្បាស់ជាពិត។"]
+    ];
+
+    function generateQ(item) {
+      const [id, level, formula, description, vars, evalFn, explanation] = item;
+      const rows = [];
+      const n = vars.length;
+      const total = 1 << n;
+      for (let i = 0; i < total; i++) {
+        const inputs = {};
+        for (let j = 0; j < n; j++) {
+          inputs[vars[j]] = ((i >> (n - 1 - j)) & 1) === 0;
+        }
+        rows.push({
+          inputs: Object.fromEntries(Object.entries(inputs).map(([k, v]) => [k, v ? '1' : '0'])),
+          target: evalFn(inputs) ? '1' : '0'
+        });
+      }
+      return { id, level, title: `លំហាត់ទី ${id}`, formula, description, variables: vars, rows, explanation };
+    }
+
+    const QUESTIONS = RAW_QUESTIONS.map(generateQ);
+
+    // App State
+    const state = {
+      curScreen: 'screen-welcome',
+      student: { name: '', class: '', school: '', date: '' },
+      cur: 0,
+      sound: true,
+      theme: localStorage.getItem('tt_theme') || 'dark',
+      ans: {},
+      status: {},
+      rev: {}
+    };
+
+    try {
+      const s = localStorage.getItem('tt_v2_state');
+      if (s) {
+        const p = JSON.parse(s);
+        if (p.student && p.student.name) {
+          state.student = p.student;
+          state.curScreen = 'screen-exercise';
+        }
+        if (p.ans) state.ans = p.ans;
+        if (p.status) state.status = p.status;
+        if (p.rev) state.rev = p.rev;
+        if (typeof p.cur === 'number') state.cur = p.cur;
+      }
+    } catch(e){}
+
+    function save() {
+      try {
+        localStorage.setItem('tt_v2_state', JSON.stringify({
+          student: state.student,
+          ans: state.ans,
+          status: state.status,
+          rev: state.rev,
+          cur: state.cur
+        }));
+      } catch(e){}
+    }
+
+    function switchScreen(screenId) {
+      state.curScreen = screenId;
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById(screenId);
+      if (target) target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Audio
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    function playBeep(isOk) {
+      if (!state.sound || !ctx) return;
+      if (ctx.state === 'suspended') ctx.resume();
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+      osc.connect(g); g.connect(ctx.destination);
+      const now = ctx.currentTime;
+      if (isOk) {
+        osc.frequency.setValueAtTime(523, now);
+        osc.frequency.exponentialRampToValueAtTime(1046, now + 0.2);
+        g.gain.setValueAtTime(0.15, now);
+        g.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+        osc.start(now); osc.stop(now + 0.3);
+      } else {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(280, now);
+        osc.frequency.exponentialRampToValueAtTime(160, now + 0.2);
+        g.gain.setValueAtTime(0.15, now);
+        g.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+        osc.start(now); osc.stop(now + 0.25);
+      }
+    }
+
+    function toast(msg) {
+      const t = document.createElement('div');
+      t.className = 'toast-item';
+      t.textContent = msg;
+      document.getElementById('toasts').appendChild(t);
+      setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 300); }, 2400);
+    }
+
+    function shootConfetti() {
+      const cvs = document.getElementById('confetti');
+      const c = cvs.getContext('2d');
+      cvs.width = window.innerWidth; cvs.height = window.innerHeight;
+      const pts = Array.from({length: 60}, () => ({
+        x: cvs.width/2, y: cvs.height/2,
+        vx: (Math.random()-0.5)*14, vy: (Math.random()-0.8)*14,
+        col: ['#6366f1','#10b981','#f59e0b','#0ea5e9','#ec4899'][Math.floor(Math.random()*5)],
+        s: Math.random()*7+4
+      }));
+      let f = 0;
+      (function run() {
+        c.clearRect(0,0,cvs.width,cvs.height);
+        pts.forEach(p => { p.x += p.vx; p.y += p.vy; p.vy += 0.4; c.fillStyle = p.col; c.fillRect(p.x, p.y, p.s, p.s); });
+        if (++f < 70) requestAnimationFrame(run); else c.clearRect(0,0,cvs.width,cvs.height);
+      })();
+    }
+
+    // Render Question
+    function render(idx) {
+      state.cur = Math.max(0, Math.min(QUESTIONS.length - 1, idx));
+      save();
+      const q = QUESTIONS[state.cur];
+      const qid = q.id;
+
+      document.getElementById('q-title').textContent = q.title;
+      document.getElementById('q-desc').textContent = q.description;
+      document.getElementById('q-formula').textContent = q.formula;
+      document.getElementById('q-lvl-tag').textContent = `កម្រិត ${q.level}`;
+      document.getElementById('st-lvl').textContent = `កម្រិត ${q.level}`;
+
+      if (state.student.name) {
+        document.getElementById('hdr-student-name').textContent = `សិស្ស៖ ${state.student.name} | រៀបរៀងដោយ ចាន់ សុខហេង`;
+      }
+
+      document.querySelectorAll('.lvl-btn').forEach(b => {
+        b.classList.toggle('active', parseInt(b.dataset.lvl) === q.level);
+      });
+
+      const st = state.status[qid] || 'pending';
+      const stTag = document.getElementById('q-st-tag');
+      stTag.className = 'tag-st ' + (st === 'correct' ? 'st-ok' : st === 'wrong' ? 'st-err' : 'st-p');
+      stTag.textContent = st === 'correct' ? '✓ ត្រឹមត្រូវ' : st === 'wrong' ? '✗ ខុសខ្លះ' : '⚪ មិនទាន់ពិនិត្យ';
+
+      document.getElementById('btn-prev').disabled = state.cur === 0;
+      document.getElementById('btn-next').disabled = state.cur === QUESTIONS.length - 1;
+
+      if (!state.ans[qid]) state.ans[qid] = new Array(q.rows.length).fill(null);
+
+      // Build Table
+      let html = '<thead><tr><th style="width:44px;">ល.រ</th>';
+      q.variables.forEach(v => { html += `<th>${v}</th>`; });
+      html += `<th class="target-col mono">${q.formula}</th></tr></thead><tbody>`;
+
+      q.rows.forEach((row, r) => {
+        const u = state.ans[qid][r];
+        const isChecked = st !== 'pending' || state.rev[qid];
+        html += `<tr><td class="mono" style="color:var(--muted);">${r+1}</td>`;
+        q.variables.forEach(v => {
+          const val = row.inputs[v];
+          html += `<td><span class="chip ${val==='1'?'chip-1':'chip-0'}">${val}</span></td>`;
+        });
+        html += `<td><div class="btn-group">
+          <button class="choice-btn ${u==='1'?'sel-1':''}" data-r="${r}" data-v="1">1</button>
+          <button class="choice-btn ${u==='0'?'sel-0':''}" data-r="${r}" data-v="0">0</button>
+        </div>`;
+        if (isChecked) {
+          html += u === row.target
+            ? `<span class="ans-tag ans-ok">✓ ត្រូវ</span>`
+            : `<span class="ans-tag ans-err">✗ (ចម្លើយ: ${row.target})</span>`;
+        }
+        html += `</td></tr>`;
+      });
+      html += '</tbody>';
+      document.getElementById('tt-table').innerHTML = html;
+
+      // Event choice buttons
+      document.querySelectorAll('.choice-btn').forEach(btn => {
+        btn.onclick = () => {
+          const r = parseInt(btn.dataset.r);
+          const v = btn.dataset.v;
+          state.ans[qid][r] = (state.ans[qid][r] === v) ? null : v;
+          if (state.status[qid]) state.status[qid] = 'pending';
+          document.getElementById('exp-box').style.display = 'none';
+          save();
+          render(state.cur);
+        };
+      });
+
+      // Explanation
+      if (st !== 'pending' || state.rev[qid]) {
+        document.getElementById('exp-text').textContent = q.explanation;
+        document.getElementById('exp-box').style.display = 'block';
+      } else {
+        document.getElementById('exp-box').style.display = 'none';
+      }
+
+      updateStats();
+    }
+
+    function check() {
+      const q = QUESTIONS[state.cur];
+      const qid = q.id;
+      const u = state.ans[qid] || [];
+      if (u.some(x => x === null)) {
+        toast('សូមជ្រើសរើស 1 ឬ 0 ក្នុងគ្រប់ក្រឡាជាមុនសិន!');
+        return;
+      }
+      const ok = q.rows.every((row, i) => u[i] === row.target);
+      state.status[qid] = ok ? 'correct' : 'wrong';
+      save();
+      playBeep(ok);
+      if (ok) { shootConfetti(); toast('អបអរសាទរ! អ្នកឆ្លើយបានត្រឹមត្រូវ ១០០% 🎉'); }
+      else { toast('នៅមានកំហុសមួយចំនួន! សូមពិនិត្យចម្លើយត្រឹមត្រូវ និងការពន្យល់។'); }
+      render(state.cur);
+    }
+
+    function reveal() {
+      const q = QUESTIONS[state.cur];
+      q.rows.forEach((row, i) => state.ans[q.id][i] = row.target);
+      state.rev[q.id] = true;
+      state.status[q.id] = 'correct';
+      save();
+      render(state.cur);
+      toast('បានបង្ហាញចម្លើយត្រឹមត្រូវ!');
+    }
+
+    function clearCur() {
+      const q = QUESTIONS[state.cur];
+      state.ans[q.id] = new Array(q.rows.length).fill(null);
+      state.status[q.id] = 'pending';
+      state.rev[q.id] = false;
+      save();
+      render(state.cur);
+      toast('បានសម្អាតក្រឡា!');
+    }
+
+    function updateStats() {
+      let done = 0, corr = 0;
+      const lvlC = {1:0, 2:0, 3:0, 4:0, 5:0};
+      QUESTIONS.forEach(q => {
+        if (state.status[q.id] === 'correct') { corr++; done++; lvlC[q.level]++; }
+        else if (state.status[q.id] === 'wrong') { done++; }
+      });
+      document.getElementById('st-prog').textContent = `${done} / 50`;
+      document.getElementById('st-corr').textContent = `${corr} / 50`;
+      document.getElementById('st-pct').textContent = `${Math.round((corr/50)*100)}%`;
+
+      for (let l = 1; l <= 5; l++) {
+        const b = document.getElementById(`bg-${l}`);
+        if (b) b.textContent = `${lvlC[l]}/10`;
+      }
+    }
+
+    function openQList() {
+      let h = '';
+      QUESTIONS.forEach((q, i) => {
+        const st = state.status[q.id];
+        const c = st === 'correct' ? 'dot-ok' : st === 'wrong' ? 'dot-err' : '';
+        const a = i === state.cur ? 'active' : '';
+        h += `<button class="q-dot mono ${c} ${a}" onclick="render(${i}); document.getElementById('modal-q').style.display='none';">${q.id}</button>`;
+      });
+      document.getElementById('q-grid').innerHTML = h;
+      document.getElementById('modal-q').style.display = 'flex';
+    }
+
+    // Show Results Certificate Screen
+    function showFinalResults() {
+      let corr = 0;
+      const lvlC = {1:0, 2:0, 3:0, 4:0, 5:0};
+      QUESTIONS.forEach(q => {
+        if (state.status[q.id] === 'correct') { corr++; lvlC[q.level]++; }
+      });
+      const pct = Math.round((corr / 50) * 100);
+
+      document.getElementById('res-name').textContent = state.student.name || 'មិនបានបញ្ជាក់';
+      document.getElementById('res-class').textContent = state.student.class || 'ទូទៅ';
+      document.getElementById('res-school').textContent = state.student.school || 'សាលារៀន';
+      document.getElementById('res-date').textContent = state.student.date || new Date().toLocaleDateString('km-KH');
+
+      document.getElementById('res-score').textContent = `${corr} / 50`;
+      document.getElementById('res-pct').textContent = `${pct}%`;
+
+      let grade = 'ល្អប្រសើរ (Excellent)';
+      if (pct < 50) grade = 'ត្រូវព្យាយាមបន្ថែម (Needs Improvement)';
+      else if (pct < 70) grade = 'មធ្យម (Fair)';
+      else if (pct < 85) grade = 'ល្អ (Good)';
+      document.getElementById('res-grade').textContent = grade;
+
+      let bHtml = '';
+      for (let l = 1; l <= 5; l++) {
+        bHtml += `<div style="background:rgba(255,255,255,0.05); padding:8px; border-radius:8px; text-align:center;">
+          <div style="font-size:0.75rem; color:var(--muted);">កម្រិត ${l}</div>
+          <div style="font-weight:700; color:#10b981;" class="mono">${lvlC[l]}/10</div>
+        </div>`;
+      }
+      document.getElementById('res-level-breakdown').innerHTML = bHtml;
+
+      switchScreen('screen-result');
+      shootConfetti();
+    }
+
+    // High Resolution Image Generator on HTML5 Canvas (100% Offline)
+    function downloadCertificateImage() {
+      let corr = 0;
+      const lvlC = {1:0, 2:0, 3:0, 4:0, 5:0};
+      QUESTIONS.forEach(q => {
+        if (state.status[q.id] === 'correct') { corr++; lvlC[q.level]++; }
+      });
+      const pct = Math.round((corr / 50) * 100);
+
+      const canvas = document.createElement('canvas');
+      canvas.width = 1200;
+      canvas.height = 800;
+      const ctx = canvas.getContext('2d');
+
+      // Background
+      const bgGrad = ctx.createLinearGradient(0, 0, 1200, 800);
+      bgGrad.addColorStop(0, '#0a0e1a');
+      bgGrad.addColorStop(0.5, '#121829');
+      bgGrad.addColorStop(1, '#080b14');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, 1200, 800);
+
+      // Gold & Indigo Borders
+      ctx.strokeStyle = '#6366f1';
+      ctx.lineWidth = 6;
+      ctx.strokeRect(30, 30, 1140, 740);
+
+      ctx.strokeStyle = '#fbbf24';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(40, 40, 1120, 720);
+
+      // Corner Accents
+      ctx.fillStyle = '#fbbf24';
+      ctx.fillRect(36, 36, 16, 16);
+      ctx.fillRect(1148, 36, 16, 16);
+      ctx.fillRect(36, 748, 16, 16);
+      ctx.fillRect(1148, 748, 16, 16);
+
+      // Top Tag
+      ctx.fillStyle = '#818cf8';
+      ctx.font = 'bold 20px "Kantumruy Pro", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('វិញ្ញាបនបត្របញ្ជាក់លទ្ធផលតក្កវិទ្យាឌីជីថល (TRUTH TABLE CERTIFICATE)', 600, 95);
+
+      // Main Title
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 36px "Kantumruy Pro", sans-serif';
+      ctx.fillText('លទ្ធផលនៃការអនុវត្តលំហាត់តារាងភាពពិត', 600, 150);
+
+      // Author Credit
+      ctx.fillStyle = '#fbbf24';
+      ctx.font = 'bold 24px "Kantumruy Pro", sans-serif';
+      ctx.fillText('រៀបរៀងដោយ ចាន់ សុខហេង', 600, 195);
+
+      // Divider line
+      ctx.strokeStyle = 'rgba(99,102,241,0.5)';
+      ctx.beginPath();
+      ctx.moveTo(150, 225);
+      ctx.lineTo(1050, 225);
+      ctx.stroke();
+
+      // Student Details
+      ctx.textAlign = 'left';
+      ctx.font = '20px "Kantumruy Pro", sans-serif';
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillText('ឈ្មោះសិស្ស (Student):', 120, 280);
+      ctx.fillText('ថ្នាក់ ឬ ជំនាញ (Class):', 120, 330);
+      ctx.fillText('គ្រឹះស្ថានសិក្សា (School):', 120, 380);
+      ctx.fillText('កាលបរិច្ឆេទ (Date):', 120, 430);
+
+      ctx.font = 'bold 24px "Kantumruy Pro", sans-serif';
+      ctx.fillStyle = '#f8fafc';
+      ctx.fillText(state.student.name || 'មិនបានបញ្ជាក់', 380, 280);
+      ctx.fillText(state.student.class || 'ទូទៅ', 380, 330);
+      ctx.fillText(state.student.school || 'សាលារៀន', 380, 380);
+      ctx.fillText(state.student.date || new Date().toLocaleDateString('km-KH'), 380, 430);
+
+      // Score Box
+      ctx.fillStyle = 'rgba(99,102,241,0.15)';
+      ctx.fillRect(720, 250, 360, 200);
+      ctx.strokeStyle = '#6366f1';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(720, 250, 360, 200);
+
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '18px "Kantumruy Pro", sans-serif';
+      ctx.fillText('ពិន្ទុត្រឹមត្រូវសរុប (Score)', 900, 285);
+
+      ctx.fillStyle = '#10b981';
+      ctx.font = 'bold 50px "JetBrains Mono", monospace';
+      ctx.fillText(`${corr} / 50`, 900, 345);
+
+      ctx.fillStyle = '#818cf8';
+      ctx.font = 'bold 32px "JetBrains Mono", monospace';
+      ctx.fillText(`ជោគជ័យ: ${pct}%`, 900, 395);
+
+      ctx.fillStyle = '#fbbf24';
+      ctx.font = 'bold 20px "Kantumruy Pro", sans-serif';
+      let grade = pct >= 85 ? 'និទ្ទេស៖ ល្អប្រសើរ (Excellent)' : pct >= 70 ? 'និទ្ទេស៖ ល្អ (Good)' : 'និទ្ទេស៖ មធ្យម (Fair)';
+      ctx.fillText(grade, 900, 430);
+
+      // Level Breakdown Bar
+      ctx.fillStyle = 'rgba(255,255,255,0.06)';
+      ctx.fillRect(100, 480, 1000, 110);
+      ctx.strokeStyle = 'rgba(148,163,184,0.2)';
+      ctx.strokeRect(100, 480, 1000, 110);
+
+      ctx.fillStyle = '#818cf8';
+      ctx.font = 'bold 18px "Kantumruy Pro", sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText('📊 លទ្ធផលតាមកម្រិតទាំង ៥ (Level Breakdown):', 120, 515);
+
+      ctx.textAlign = 'center';
+      ctx.font = '16px "Kantumruy Pro", sans-serif';
+      for (let l = 1; l <= 5; l++) {
+        const x = 120 + (l - 1) * 190 + 95;
+        ctx.fillStyle = '#94a3b8';
+        ctx.fillText(`កម្រិត ${l}`, x, 545);
+        ctx.fillStyle = '#10b981';
+        ctx.font = 'bold 22px "JetBrains Mono", monospace';
+        ctx.fillText(`${lvlC[l]}/10`, x, 572);
+        ctx.font = '16px "Kantumruy Pro", sans-serif';
+      }
+
+      // Bottom Signatures
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '16px "Kantumruy Pro", sans-serif';
+      ctx.fillText('ប្រព័ន្ធលំហាត់តារាងភាពពិតឌីជីថល (Truth Table Master 1/0)', 100, 680);
+      ctx.fillText('ផ្ទៀងផ្ទាត់ដោយស្វ័យប្រវត្តិតាមក្បួនតក្កវិទ្យាគណិតវិទ្យា', 100, 705);
+
+      ctx.textAlign = 'right';
+      ctx.fillStyle = '#fbbf24';
+      ctx.font = 'bold 22px "Kantumruy Pro", sans-serif';
+      ctx.fillText('រៀបរៀងដោយ ចាន់ សុខហេង', 1100, 680);
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '16px "Kantumruy Pro", sans-serif';
+      ctx.fillText('គ្រូបង្រៀន និងអ្នកអភិវឌ្ឍន៍កម្មវិធី', 1100, 705);
+
+      // Trigger direct download
+      const link = document.createElement('a');
+      const safeName = (state.student.name || 'Student').replace(/[^a-zA-Z0-9_\u1780-\u17FF]/g, '_');
+      link.download = `វិញ្ញាបនបត្រ_${safeName}_តារាងភាពពិត.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      toast('បានទាញយករូបភាពវិញ្ញាបនបត្រដោយជោគជ័យ! 🎉');
+    }
+
+    // Start Quiz from Welcome Screen
+    document.getElementById('btn-start-quiz').onclick = () => {
+      const name = document.getElementById('input-name').value.trim();
+      if (!name) {
+        toast('សូមបញ្ចូលឈ្មោះរបស់សិស្សជាមុនសិន!');
+        document.getElementById('input-name').focus();
+        return;
+      }
+      state.student.name = name;
+      state.student.class = document.getElementById('input-class').value.trim();
+      state.student.school = document.getElementById('input-school').value.trim();
+      state.student.date = new Date().toLocaleDateString('km-KH');
+      save();
+      render(state.cur);
+      switchScreen('screen-exercise');
+      toast(`សូមស្វាគមន៍ ${name}! ចាប់ផ្ដើមលំហាត់បានហើយ។`);
+    };
+
+    // Event Bindings
+    document.getElementById('btn-check').onclick = check;
+    document.getElementById('btn-reveal').onclick = reveal;
+    document.getElementById('btn-clear').onclick = clearCur;
+    document.getElementById('btn-prev').onclick = () => render(state.cur - 1);
+    document.getElementById('btn-next').onclick = () => render(state.cur + 1);
+    document.getElementById('btn-finish-quiz').onclick = showFinalResults;
+
+    document.getElementById('btn-download-image').onclick = downloadCertificateImage;
+    document.getElementById('btn-back-to-exercise').onclick = () => switchScreen('screen-exercise');
+    document.getElementById('btn-restart-from-result').onclick = () => {
+      if (confirm('តើអ្នកចង់ចាប់ផ្ដើមធ្វើលំហាត់ពីដំបូងឡើងវិញមែនទេ?')) {
+        state.ans = {}; state.status = {}; state.rev = {}; state.cur = 0;
+        save(); render(0); switchScreen('screen-exercise'); toast('បានចាប់ផ្ដើមឡើងវិញ!');
+      }
+    };
+
+    document.querySelectorAll('.lvl-btn').forEach(b => {
+      b.onclick = () => {
+        const l = parseInt(b.dataset.lvl);
+        const idx = QUESTIONS.findIndex(q => q.level === l);
+        if (idx !== -1) render(idx);
+      };
+    });
+
+    document.getElementById('btn-sound').onclick = () => {
+      state.sound = !state.sound;
+      document.getElementById('btn-sound').textContent = state.sound ? '🔊' : '🔇';
+      toast(state.sound ? 'សំឡេង៖ បើក' : 'សំឡេង៖ បិទ');
+    };
+
+    function setTheme(t) {
+      state.theme = t;
+      document.documentElement.setAttribute('data-theme', t);
+      document.getElementById('btn-theme').textContent = t === 'dark' ? '🌓' : '☀️';
+      localStorage.setItem('tt_theme', t);
+    }
+    document.getElementById('btn-theme').onclick = () => setTheme(state.theme === 'dark' ? 'light' : 'dark');
+    setTheme(state.theme);
+
+    document.getElementById('btn-list').onclick = openQList;
+    document.getElementById('close-modal-q').onclick = () => document.getElementById('modal-q').style.display = 'none';
+    document.getElementById('btn-cheat').onclick = () => document.getElementById('modal-c').style.display = 'flex';
+    document.getElementById('close-modal-c').onclick = () => document.getElementById('modal-c').style.display = 'none';
+
+    window.onclick = e => {
+      if (e.target.id === 'modal-q') document.getElementById('modal-q').style.display = 'none';
+      if (e.target.id === 'modal-c') document.getElementById('modal-c').style.display = 'none';
+    };
+
+    window.onkeydown = e => {
+      if (state.curScreen === 'screen-exercise') {
+        if (e.key === 'ArrowRight' && state.cur < QUESTIONS.length - 1) render(state.cur + 1);
+        if (e.key === 'ArrowLeft' && state.cur > 0) render(state.cur - 1);
+      }
+    };
+
+    // Initial Screen Check
+    if (state.student && state.student.name) {
+      document.getElementById('input-name').value = state.student.name;
+      document.getElementById('input-class').value = state.student.class || '';
+      document.getElementById('input-school').value = state.student.school || '';
+      render(state.cur);
+      switchScreen(state.curScreen || 'screen-exercise');
+    } else {
+      switchScreen('screen-welcome');
+    }
+  </script>
+</body>
+</html>
